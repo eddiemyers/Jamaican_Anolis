@@ -12,11 +12,10 @@ library(phytools)
 library(beastio)
 ##############
 
-read.tree("snapp_07192021.tre")->ano
 #Below I have re-scaled branch lengths by fixing the root node at 37.3 mya.
-ano$edge.length<-(37.3/0.013120940006274697)*(ano$edge.length)
+ano <- "((((garmani:12.82,grahami:12.82):2.901,(opalinus:10.8953,opalinus_Blue_Mts:10.8953):4.8346):6.3691,(lineatopus:13.90776,reconditus:13.90776):8.1913):15.2009,valencienni:37.3);"
 
-plot(ano)
+plottree(ano)
 sp_name <- species.name(ano)
 node_matrix <- read.tree.nodes(str = ano, name=sp_name)$nodes
 node_matrix[,5]<-2
@@ -42,8 +41,3 @@ opalinus <- c("opalinuss1", "opalinuss2", "opalinuss3", "opalinuss4", "opalinuss
 getCladeMonophyly(Z, tips= opalinus)
 val_bl <- c("valenciennis1", "valenciennis2", "valenciennis3", "valenciennis4", "valenciennis5", "valenciennis6", "valenciennis7", "valenciennis8", "valenciennis9", "valenciennis10", "valenciennis11", "valenciennis12", "valenciennis13", "valenciennis14", "valenciennis15", "valenciennis16", "valenciennis17", "valenciennis18", "valenciennis19", "valenciennis20", "opalinus_Blue_Mtss1", "opalinus_Blue_Mtss2", "opalinus_Blue_Mtss3", "opalinus_Blue_Mtss4", "opalinus_Blue_Mtss5", "opalinus_Blue_Mtss6", "opalinus_Blue_Mtss7")
 getCladeMonophyly(Z, tips= val_bl)
-
-#> getCladeMonophyly(Z, tips= opalinus)
-#[1] 0.995
-#> getCladeMonophyly(Z, tips= val_bl)
-#[1] 0
