@@ -32,6 +32,7 @@ phybase2phylo <- function(x) {
   return(read.tree(text=x))
 }
 
+# Simulate 10,000 trees and get proportion of monophyly
 for(i in 1:10000){
   write.tree(phybase2phylo(sim.coaltree.sp(rootnode=13, nodematrix=node_matrix,nspecies=7,seq=as.double(c("35", "20", "27", "15", "7", "4", "20")), name=sp_name)$gt), "Anolis_sims.tre", append = T)
 }
